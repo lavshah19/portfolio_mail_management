@@ -66,9 +66,9 @@ async function sendMailFromNodeMailer(name, email, message) {
       if (error) {
         console.error(" Error sending email:", error);
       }
-      console.log("Email sent:", info.response);
+      console.log("Email sent:", info);
     });
-    console.log("Mail sent successfully!");
+    
   } catch (error) {
     console.error("Error sending email:", error);
   }
