@@ -62,12 +62,19 @@ async function sendMailFromNodeMailer(name, email, message) {
 `
     };
 
-    await transport.sendMail(mailOptions, (error, info) => {
+    await new Promise((resolve,reject)=>{
+      transport.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error(" Error sending email:", error);
+        reject(error);
+        
+      }else{
+        console.log("Email sent:", info);
+      resolve(info);
       }
-      console.log("Email sent:", info);
+      
     });
+    })
     
   } catch (error) {
     console.error("Error sending email:", error);
